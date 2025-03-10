@@ -74,7 +74,4 @@ TEST(ReporterTest, GenerateReport) {
     in_file.close();
 }
 
-int main(int argc, char** argv) {
-    ::testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
-}
+// Удаляем функцию main, так как она предоставляется GTest::gtest_main

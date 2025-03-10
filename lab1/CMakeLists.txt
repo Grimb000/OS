@@ -8,7 +8,15 @@ endif()
 project("Lab1")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
-# Включаем поддержку тестирования
+# Глобальный путь для включаемых файлов
+include_directories("${PROJECT_SOURCE_DIR}/Shared")
+
+# Добавляем поддиректории для исполняемых файлов
+add_subdirectory("Creator")
+add_subdirectory("Reporter")
+add_subdirectory("Main")
+
+# Настройка тестирования
 enable_testing()
 
 # Загружаем Google Test (если не найден)
@@ -23,25 +31,6 @@ if(NOT GTest_FOUND)
     FetchContent_MakeAvailable(googletest)
 endif()
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
-
-# Добавляем поддиректории для основного проекта
-add_subdirectory("Main")
-target_include_directories(Main PUBLIC
-                          "${PROJECT_BINARY_DIR}"
-                          "${PROJECT_SOURCE_DIR}/Shared"
-                          )
-
-add_subdirectory("Creator")
-target_include_directories(Creator PUBLIC
-                          "${PROJECT_BINARY_DIR}"
-                          "${PROJECT_SOURCE_DIR}/Shared"
-                          )
-
-add_subdirectory("Reporter")
-target_include_directories(Reporter PUBLIC
-                          "${PROJECT_BINARY_DIR}"
-                          "${PROJECT_SOURCE_DIR}/Shared"
-                          )
 
 # Добавляем поддиректорию для тестов
 add_subdirectory("tests")
