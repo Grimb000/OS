@@ -1,0 +1,23 @@
+# Зависимости
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# Кэши
+.npm
+.eslintcache
+.jest-cache
+
+# Отчеты о покрытии
+coverage/
+
+# IDE и редакторы
+.idea/
+.vscode/
+*.sublime-*
+*.swp
+*.swo
+.DS_Store
